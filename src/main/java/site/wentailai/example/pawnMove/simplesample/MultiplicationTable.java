@@ -56,18 +56,29 @@ public class MultiplicationTable {
      private String getMultiplicationTable4() {
          String content = "";
          for(int i = 1; i <= 9; i++) {
-             content = content + getMultiplicationTable4Onrecord(i, i) + "\n";
+             content = content + getMultiplicationTableOnrecord(i, i) + "\n";
          }
          return content;
      }
-    private String getMultiplicationTable4Onrecord(int i, int j) {
-        if(i == 1) {
-            return "1 * " + j + " = " + j;
-        }
-        else {
-            return getMultiplicationTable4Onrecord(i - 1, j) + " " + i + " * " + j + " = " + i * j;
-        }
-    }
+
+    /**
+     * 打印99乘法表, 递归（装逼）写法
+     * @return
+     */
+     private String getMultiplicationTable5(int i) {
+         if(i == 0) {
+             return "";
+         }
+         return getMultiplicationTable5(i - 1) + "\n" + getMultiplicationTableOnrecord(i, i);
+     }
+     private String getMultiplicationTableOnrecord(int i, int j) {
+         if(i == 1) {
+             return "1 * " + j + " = " + j;
+         }
+         else {
+             return getMultiplicationTableOnrecord(i - 1, j) + " " + i + " * " + j + " = " + i * j;
+         }
+     }
 
     public static void main(String[] args) {
         MultiplicationTable m = new MultiplicationTable();
@@ -82,6 +93,10 @@ public class MultiplicationTable {
 
         System.out.println();
         System.out.println(m.getMultiplicationTable4());
+
+        System.out.println("----");
+        System.out.println(m.getMultiplicationTable5(9));
+
 
     }
 }
