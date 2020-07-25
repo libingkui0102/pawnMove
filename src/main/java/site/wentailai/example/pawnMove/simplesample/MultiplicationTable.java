@@ -65,7 +65,7 @@ public class MultiplicationTable {
      * 打印99乘法表, 递归（装逼）写法
      * @return
      */
-     private String getMultiplicationTable5(int i) {
+     public String getMultiplicationTable5(int i) {
          if(i == 0) {
              return "";
          }
