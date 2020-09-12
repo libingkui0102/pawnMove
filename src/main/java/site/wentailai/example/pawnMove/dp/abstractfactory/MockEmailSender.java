@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 public class MockEmailSender implements EmailSender{
     @Override
     public void send(String from, String to, String content) {
+
         System.out.println("Mock EmailSender from:" + from
                 + " to:" + to
                 + " content:" + content
