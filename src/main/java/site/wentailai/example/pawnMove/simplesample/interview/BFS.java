@@ -9,18 +9,9 @@ import java.util.LinkedList;
  * Description: 主度遍历二叉树
  */
 public class BFS {
-    synchronized
-    public static Node getNodeTree() {
-        Node head = new Node(1, "head");
-        head.setLeft(new Node(2, "left1"));
-        head.setRight(new Node(3, "right1"));
-        head.getLeft().setLeft(new Node(4, "left11"));
-        head.getLeft().setRight(new Node(5, "right11"));
-        return head;
-    }
     public static void main(String[] args) {
         BFS bfs = new BFS();
-        bfs.bfsTrans(getNodeTree());
+        bfs.bfsTrans(Node.getNodeTree());
     }
 
     void bfsTrans(Node head) {
