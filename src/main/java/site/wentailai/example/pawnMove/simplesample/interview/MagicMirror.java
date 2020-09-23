@@ -10,16 +10,16 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class MagicMirror {
     int n;
     Object lock = new Object();
-    AtomicBoolean magic = new AtomicBoolean(true);
+    boolean magic = true;
     public MagicMirror(int n) {
         this.n = n;
     }
     public void magic() throws InterruptedException {
         while(n > 0) {
                 synchronized (lock) {
-                if(magic.get()) {
+                if(magic) {
                     System.out.println("magic");
-                    magic.set(false);
+                    magic = false;
                     lock.notifyAll();
                 }
                 else {
@@ -32,9 +32,9 @@ public class MagicMirror {
     public void mirror() throws InterruptedException {
         while(n > 0) {
             synchronized (lock) {
-                if(!magic.get()) {
+                if(!magic) {
                     System.out.println("mirror");
-                    magic.set(true);
+                    magic = true;
                     n--;
                     lock.notifyAll();
                 }
