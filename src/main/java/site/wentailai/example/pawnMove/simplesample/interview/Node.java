@@ -1,6 +1,7 @@
 package site.wentailai.example.pawnMove.simplesample.interview;
 
 import lombok.Data;
+import lombok.ToString;
 
 /**
  * User: libingkui
@@ -8,16 +9,23 @@ import lombok.Data;
  * Description:
  */
 @Data
+@ToString
 public class Node implements Comparable<Node>{
     private Integer id;
     private String name;
-    Node left;
-    Node right;
+    public Node left;
+    public Node right;
 
     public Node(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
+
+    public Node(Integer id, Node right) {
+        this.id = id;
+        this.right = right;
+    }
+
     public static Node getNodeTree() {
         Node head = new Node(1, "head");
         head.setLeft(new Node(2, "left1"));
@@ -31,4 +39,5 @@ public class Node implements Comparable<Node>{
     public int compareTo(Node o) {
         return this.getId().compareTo(o.getId());
     }
+
 }
